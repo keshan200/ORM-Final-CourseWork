@@ -1,6 +1,7 @@
 package lk.ijse.cw.config;
 
 import lk.ijse.cw.entity.Program;
+import lk.ijse.cw.entity.Register;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.entity.User;
 import org.hibernate.Session;
@@ -20,7 +21,8 @@ public class FactoryConfiguration {
         Configuration configuration = new Configuration().configure()
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Student.class)
-                 .addAnnotatedClass(Program.class);
+                 .addAnnotatedClass(Program.class)
+                .addAnnotatedClass(Register.class);
 
         session = configuration.buildSessionFactory();
 

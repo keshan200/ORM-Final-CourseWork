@@ -28,6 +28,7 @@ public class Student {
  private int tel;
  private String gender;
 
-
+@OneToMany(mappedBy = "student")
+ List<Register>registers;
 
 }

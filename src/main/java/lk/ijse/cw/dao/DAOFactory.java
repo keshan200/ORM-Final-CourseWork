@@ -2,6 +2,7 @@ package lk.ijse.cw.dao;
 
 import lk.ijse.cw.dao.custom.UserDAO;
 import lk.ijse.cw.dao.custom.impl.ProgramDAOImpl;
+import lk.ijse.cw.dao.custom.impl.RegisterDAOImpl;
 import lk.ijse.cw.dao.custom.impl.StudentDAOImpl;
 import lk.ijse.cw.dao.custom.impl.UserDAOImpl;
 import lk.ijse.cw.entity.User;
@@ -30,7 +31,7 @@ public class DAOFactory {
             case Course:
                 return new ProgramDAOImpl();
             case Register:
-
+                return new RegisterDAOImpl();
 
 
                 default:

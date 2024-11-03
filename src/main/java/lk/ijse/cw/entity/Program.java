@@ -1,10 +1,12 @@
 package lk.ijse.cw.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -21,5 +23,7 @@ public class Program {
     private Double fee;
 
 
+    @OneToMany(mappedBy = "program")
+    List<Register> registers;
 
 }
