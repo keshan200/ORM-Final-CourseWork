@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 
 public class ProgramDTO {
 
-    private int cId;
+    private String cId;
     private String cName;
     private String Duration;
-    private String fee;
+    private Double fee;
 
 }

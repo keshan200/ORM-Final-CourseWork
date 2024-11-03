@@ -1,10 +1,8 @@
 package lk.ijse.cw.entity;
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,7 +21,6 @@ public class Student {
  @ManyToOne
  private User user;
 
-
  private String name;
  private String email;
  private String address;
@@ -31,9 +28,6 @@ public class Student {
  private int tel;
  private String gender;
 
-
- @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
- List<Register>register;
 
 
 }

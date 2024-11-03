@@ -11,13 +11,13 @@ import java.util.List;
 
 public class UserBOImpl implements UserBO {
 
-    UserDAO userDAOImpl = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.User);
+    UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.User);
 
 
     @Override
     public boolean saveUser(UserDTO user) {
 
-        return userDAOImpl.save(new User(user.getUID(),user.getPassword(),user.getEmail(),user.getName(),user.getRole(),null));
+        return userDAO.save(new User(user.getUID(),user.getPassword(),user.getEmail(),user.getName(),user.getRole(),null));
     }
 
     @Override

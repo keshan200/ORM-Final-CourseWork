@@ -5,6 +5,7 @@ import lk.ijse.cw.bo.custom.ProgramBO;
 import lk.ijse.cw.dao.DAOFactory;
 import lk.ijse.cw.dao.custom.ProgramDAO;
 import lk.ijse.cw.dao.custom.impl.ProgramDAOImpl;
+import lk.ijse.cw.entity.Program;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class ProgramBOImpl implements ProgramBO {
 
     @Override
     public boolean saveProgram(ProgramDTO program) {
-        return false;
+       return programDAO.save(new Program(program.getCId(),program.getCName(),program.getDuration(),program.getFee()));
     }
 
     @Override

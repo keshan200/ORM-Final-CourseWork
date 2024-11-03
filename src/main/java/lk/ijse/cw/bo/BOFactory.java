@@ -1,6 +1,7 @@
 package lk.ijse.cw.bo;
 
 import lk.ijse.cw.bo.custom.impl.ProgramBOImpl;
+
 import lk.ijse.cw.bo.custom.impl.StudentBOImpl;
 import lk.ijse.cw.bo.custom.impl.UserBOImpl;
 import lk.ijse.cw.dao.custom.impl.UserDAOImpl;
@@ -27,7 +28,7 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        User,Student,Course
+        User,Student,Course,Register
     }
 
 
@@ -39,6 +40,8 @@ public class BOFactory {
                 return new StudentBOImpl();
             case Course:
                 return new ProgramBOImpl();
+            case Register:
+
 
         }
         return null;

@@ -29,6 +29,8 @@ public class DAOFactory {
                 return new StudentDAOImpl();
             case Course:
                 return new ProgramDAOImpl();
+            case Register:
+
 
 
                 default:
