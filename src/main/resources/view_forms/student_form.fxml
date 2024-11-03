@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ancStu" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.StudentController">
+   <children>
+      <TextField fx:id="txtNIC" layoutX="29.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" />
+      <Label layoutX="29.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="Student NIC :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMail" layoutX="29.0" layoutY="141.0" prefHeight="36.0" prefWidth="551.0" />
+      <TextField fx:id="txtTel" layoutX="27.0" layoutY="319.0" prefHeight="36.0" prefWidth="239.0" />
+      <TextField fx:id="txtName" layoutX="305.0" layoutY="64.0" prefHeight="36.0" prefWidth="276.0" />
+      <TextField fx:id="txtAdrs" layoutX="27.0" layoutY="229.0" prefHeight="36.0" prefWidth="315.0" />
+      <TableView fx:id="tblStu" layoutX="22.0" layoutY="381.0" prefHeight="264.0" prefWidth="1102.0">
+        <columns>
+          <TableColumn fx:id="colNIc" prefWidth="163.9999656677246" text="NIC" />
+          <TableColumn fx:id="colName" prefWidth="193.6000213623047" text="Name" />
+            <TableColumn fx:id="colMail" prefWidth="245.5999755859375" text="Email" />
+            <TableColumn fx:id="colAdrs" prefWidth="137.60003662109375" text="Address" />
+            <TableColumn fx:id="colGender" prefWidth="163.199951171875" text="Gender" />
+            <TableColumn fx:id="colContact" prefWidth="195.20001220703125" text="Contact" />
+        </columns>
+      </TableView>
+      <Label layoutX="305.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="Student Name :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="111.0" prefHeight="20.0" prefWidth="118.0" text="Student Email :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="202.0" prefHeight="20.0" prefWidth="118.0" text="Student Address :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="371.0" layoutY="202.0" prefHeight="20.0" prefWidth="118.0" text="Gender :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="292.0" prefHeight="20.0" prefWidth="118.0" text="Student Contact :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="305.0" layoutY="292.0" prefHeight="20.0" prefWidth="118.0" text="Student Birthday :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="711.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="168.0" text="Save" />
+      <Button layoutX="711.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="36.0" prefWidth="168.0" text="Update" />
+      <Button layoutX="919.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="36.0" prefWidth="168.0" text="Delete" />
+      <Button layoutX="919.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="36.0" prefWidth="168.0" text="Clear" />
+      <DatePicker fx:id="DpBDay" layoutX="305.0" layoutY="319.0" prefHeight="36.0" prefWidth="276.0" />
+      <JFXComboBox fx:id="drpGender" layoutX="364.0" layoutY="229.0" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: white;" />
+      <TextField fx:id="txtCid" layoutX="864.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" />
+      <Label layoutX="864.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="Cordinator ID :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

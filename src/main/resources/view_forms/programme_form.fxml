@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ancCourse" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.ProgrammeController">
+   <children>
+      <Button layoutX="58.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="142.0" text="Save" />
+      <TextField fx:id="txtID" layoutX="58.0" layoutY="86.0" prefHeight="36.0" prefWidth="302.0" />
+      <Label layoutX="58.0" layoutY="56.0" prefHeight="20.0" prefWidth="118.0" text="Programe ID :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDuration" layoutX="58.0" layoutY="313.0" prefHeight="36.0" prefWidth="302.0" />
+      <TextField fx:id="txtname" layoutX="57.0" layoutY="213.0" prefHeight="36.0" prefWidth="302.0" />
+      <TextField fx:id="txtFee" layoutX="58.0" layoutY="417.0" prefHeight="36.0" prefWidth="301.0" />
+      <Label layoutX="58.0" layoutY="389.0" prefHeight="20.0" prefWidth="136.0" text="Programe Fee (LKR) :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="284.0" prefHeight="20.0" prefWidth="136.0" text="Programe Duration :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="184.0" prefHeight="20.0" prefWidth="118.0" text="Programe Name :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="240.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="36.0" prefWidth="118.0" text="Update" />
+      <Button layoutX="58.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="36.0" prefWidth="142.0" text="Delete" />
+      <Button layoutX="240.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="36.0" prefWidth="118.0" text="Clear" />
+      <TableView fx:id="tblCourse" layoutX="458.0" layoutY="28.0" prefHeight="606.0" prefWidth="661.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="140.80001831054688" text="Programe ID" />
+          <TableColumn fx:id="colName" prefWidth="234.39996337890625" text="Programe Name" />
+            <TableColumn fx:id="colDuration" prefWidth="130.39996337890625" text="Duration" />
+            <TableColumn fx:id="colFee" prefWidth="155.199951171875" text="Fee(LKR)" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
