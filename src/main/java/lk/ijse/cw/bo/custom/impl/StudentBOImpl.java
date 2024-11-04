@@ -9,7 +9,6 @@ import lk.ijse.cw.dao.custom.UserDAO;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.entity.User;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,17 +32,46 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public boolean updateStu(StudentDTO student) {
-        return false;
+
+        UserDTO user = student.getUser();
+        User user1 = new User(user.getUID(),user.getPassword(),user.getEmail(),user.getName(),user.getRole(),null);
+        return StudetDAO.save(new Student(student.getNIC(),user1,student.getName(),student.getEmail(),student.getAddress(),student.getBday(),student.getTel(),student.getGender(),null));
     }
 
     @Override
     public boolean deleteStu(String id) {
-        return false;
+        return StudetDAO.delete(id);
     }
 
     @Override
-    public List<UserDTO> getStudents() {
-        return List.of();
+    public List<StudentDTO> getStudents() {
+
+        ArrayList<StudentDTO> students = new ArrayList<>();
+
+        List<Student> entityList = StudetDAO.getAll();
+
+        for (Student s : entityList) {
+            UserDTO userDTO = new UserDTO(
+                    s.getUser().getUID(),
+                    s.getUser().getPassword(),
+                    s.getUser().getEmail(),
+                    s.getUser().getName(),
+                    s.getUser().getRole()
+            );
+
+            students.add(new StudentDTO(
+                    s.getNIC(),
+                    userDTO,
+                    s.getName(),
+                    s.getEmail(),
+                    s.getAddress(),
+                    s.getBday(),
+                    s.getTel(),
+                    s.getGender()
+            ));
+        }
+
+        return students;
     }
 
     @Override

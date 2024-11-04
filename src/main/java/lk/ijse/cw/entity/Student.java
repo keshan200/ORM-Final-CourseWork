@@ -31,4 +31,10 @@ public class Student {
 @OneToMany(mappedBy = "student")
  List<Register>registers;
 
+ public Student(String nic, String email, String address, int tel) {
+  this.NIC = nic;
+  this.email = email;
+  this.address = address;
+  this.tel = tel;
+ }
 }

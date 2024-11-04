@@ -1,4 +1,6 @@
 package lk.ijse.cw.dao;
+import lk.ijse.cw.entity.Student;
+
 import java.util.List;
 
 
@@ -11,7 +13,7 @@ public interface CrudDAO<T> extends SuperDAO{
 
     boolean delete (String id);
 
-    List<T> getAll ();
+    List<Student> getAll ();
 
     T search (String id);
 

@@ -1,5 +1,6 @@
 package lk.ijse.cw.dao.custom.impl;
 
+import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.custom.StudentDAO;
 import lk.ijse.cw.entity.Student;
@@ -63,7 +64,13 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> getAll() {
-        return List.of();
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Student> students = session.createQuery("from Student").list();
+        transaction.commit();
+        session.close();
+        return students;
     }
 
 
@@ -72,6 +79,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public Student search(String id) {
         return null;
+
     }
 
 

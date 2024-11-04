@@ -1,5 +1,6 @@
 package lk.ijse.cw.DTO;
 
+import lk.ijse.cw.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,5 @@ public class UserDTO {
         public UserDTO(String uId) {
                 this.uID = uId;
         }
+
 }

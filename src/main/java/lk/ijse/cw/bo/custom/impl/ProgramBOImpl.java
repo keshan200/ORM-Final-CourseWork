@@ -18,7 +18,7 @@ public class ProgramBOImpl implements ProgramBO {
 
     @Override
     public boolean saveProgram(ProgramDTO program) {
-       return programDAO.save(new Program(program.getCId(),program.getCName(),program.getDuration(),program.getFee()));
+       return programDAO.save(new Program(program.getCId(),program.getCName(),program.getDuration(),program.getFee(),null));
     }
 
     @Override

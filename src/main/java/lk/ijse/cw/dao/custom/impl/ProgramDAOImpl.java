@@ -3,6 +3,7 @@ package lk.ijse.cw.dao.custom.impl;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.custom.ProgramDAO;
 import lk.ijse.cw.entity.Program;
+import lk.ijse.cw.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public class ProgramDAOImpl implements ProgramDAO {
     @Override
     public boolean save(Program entity) {
+
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -35,7 +37,7 @@ public class ProgramDAOImpl implements ProgramDAO {
     }
 
     @Override
-    public List<Program> getAll() {
+    public List<Student> getAll() {
         return List.of();
     }
 
