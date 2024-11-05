@@ -1,6 +1,7 @@
 package lk.ijse.cw.dao.custom.impl;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.custom.UserDAO;
+import lk.ijse.cw.entity.Register;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.entity.User;
 import org.hibernate.Session;
@@ -37,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<Student> getAll() {
+    public List<User> getAll() {
         return List.of();
     }
 

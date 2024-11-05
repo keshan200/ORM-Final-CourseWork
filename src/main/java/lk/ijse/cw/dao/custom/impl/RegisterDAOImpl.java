@@ -36,7 +36,7 @@ public class RegisterDAOImpl implements RegisterDAO {
     }
 
     @Override
-    public List<Student> getAll() {
+    public List<Register> getAll() {
         return List.of();
     }
 

@@ -6,6 +6,7 @@ import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -28,17 +29,43 @@ public class ProgramDAOImpl implements ProgramDAO {
 
     @Override
     public boolean update(Program entity) {
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
     public boolean delete(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Query query = session.createQuery("delete from Program where cId = ?1");
+        query.setParameter(1, id);
+
+        boolean Delete = query.executeUpdate() > 0;
+
+        if (Delete) {
+            transaction.commit();
+            session.close();
+            return true;
+        }
         return false;
+
     }
 
     @Override
-    public List<Student> getAll() {
-        return List.of();
+    public List<Program> getAll() {
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Program> program = session.createQuery("from Program ").list();
+        transaction.commit();
+        session.close();
+        return program;
     }
 
     @Override

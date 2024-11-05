@@ -57,12 +57,6 @@
             </Label>
          </children>
       </Pane>
-      <AnchorPane fx:id="ancMain" layoutX="188.0" layoutY="106.0" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;">
-         <children>
-            <Pane layoutX="74.0" layoutY="48.0" prefHeight="91.0" prefWidth="255.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
-            <Pane layoutX="714.0" layoutY="48.0" prefHeight="91.0" prefWidth="255.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
-            <Pane layoutX="387.0" layoutY="48.0" prefHeight="91.0" prefWidth="255.0" style="-fx-background-radius: 40; -fx-background-color: white;" />
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="ancMain" layoutX="188.0" layoutY="106.0" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" />
    </children>
 </AnchorPane>

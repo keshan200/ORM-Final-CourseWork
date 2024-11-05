@@ -29,5 +29,8 @@ public class User {
      private List<Student> students;
 
 
-
+    public User(String uID, String password) {
+        this.uID = uID;
+        this.password = password;
+    }
 }

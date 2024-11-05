@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="505.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.LoginController">
+   <children>
+      <ImageView fitHeight="510.0" fitWidth="814.0" layoutY="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/loginBackground.png" />
+         </image>
+         <effect>
+            <GaussianBlur radius="20.6" />
+         </effect>
+      </ImageView>
+      <Rectangle id="back" arcHeight="5.0" arcWidth="5.0" fill="#fcfeff56" height="378.0" layoutX="94.0" layoutY="67.0" stroke="WHITE" strokeType="INSIDE" width="642.0" />
+      <Label layoutX="297.0" layoutY="67.0" prefHeight="58.0" prefWidth="235.0" text="LOGIN HERE">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtuID" layoutX="278.0" layoutY="180.0" prefHeight="40.0" prefWidth="258.0" style="-fx-background-radius: 15;" />
+      <PasswordField fx:id="txtPass" layoutX="278.0" layoutY="269.0" prefHeight="40.0" prefWidth="258.0" style="-fx-background-radius: 15;" />
+      <Label layoutX="278.0" layoutY="153.0" prefHeight="18.0" prefWidth="66.0" text="User ID :">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="278.0" layoutY="234.0" prefHeight="26.0" prefWidth="118.0" text="Password :">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="345.0" layoutY="349.0" onAction="#btnLogin" prefHeight="40.0" prefWidth="139.0" style="-fx-background-color: #00bfff; -fx-background-radius: 30;" text="Login">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

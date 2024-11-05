@@ -13,7 +13,7 @@ public interface CrudDAO<T> extends SuperDAO{
 
     boolean delete (String id);
 
-    List<Student> getAll ();
+    List<T> getAll ();
 
     T search (String id);
 
