@@ -26,4 +26,7 @@ public class Program {
     @OneToMany(mappedBy = "program")
     List<Register> registers;
 
+    public Program(String cId) {
+        this.cId = cId;
+    }
 }

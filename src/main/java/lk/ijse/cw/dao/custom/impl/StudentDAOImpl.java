@@ -1,13 +1,17 @@
 package lk.ijse.cw.dao.custom.impl;
 
 import lk.ijse.cw.DTO.StudentDTO;
+import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.custom.StudentDAO;
+import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Student;
+import lk.ijse.cw.entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -88,4 +92,39 @@ public class StudentDAOImpl implements StudentDAO {
     public String genarateNextID() {
         return "";
     }
+
+
+    @Override
+    public List<Student> searchNameFromNIC(String nic) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        List<Student> stList = new ArrayList<>();
+
+        try {
+
+            Query<Object[]> query = session.createNativeQuery("SELECT name, user_uID FROM student WHERE NIC = :nic");
+            query.setParameter("nic", nic);
+
+            List<Object[]> results = query.list();
+
+            for (Object[] result : results) {
+                String name = (String) result[0];
+                String user_uID = (String) result[1];
+
+
+                User user = session.get(User.class, user_uID);
+
+                Student student = new Student();
+                student.setName(name);
+                student.setUser(user);
+                stList.add(student);
+            }
+        } finally {
+            session.close();
+        }
+
+        return stList;
+    }
+
+
+
 }

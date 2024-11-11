@@ -37,4 +37,8 @@ public class Student {
   this.address = address;
   this.tel = tel;
  }
+
+    public Student(String nic) {
+     this.NIC = nic;
+    }
 }

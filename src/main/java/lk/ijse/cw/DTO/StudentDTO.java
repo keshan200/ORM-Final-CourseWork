@@ -32,4 +32,13 @@ public class StudentDTO {
         this.tel = tel;
         this.bday = LocalDate.parse(bday);
     }
+
+    public StudentDTO(String name, User user) {
+        this.name = name;
+        this.user = new UserDTO(user.getUID());
+    }
+
+    public StudentDTO(String nic) {
+        this.NIC = nic;
+    }
 }

@@ -1,5 +1,6 @@
 package lk.ijse.cw.bo.custom;
 
+import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.bo.SuperBO;
@@ -17,4 +18,7 @@ public interface StudentBO extends SuperBO {
     List<StudentDTO> getStudents();
     ArrayList<String> loadAllStudentIDs();
     UserDTO serachUser(String stID);
+
+
+    List<StudentDTO> SearchByNICstName(String nic);
 }

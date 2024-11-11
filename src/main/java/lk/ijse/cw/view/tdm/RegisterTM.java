@@ -1,9 +1,7 @@
-package lk.ijse.cw.entity;
+package lk.ijse.cw.view.tdm;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import lk.ijse.cw.entity.Program;
+import lk.ijse.cw.entity.Student;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,22 +12,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
+public class RegisterTM {
 
-public class Register {
-    @Id
+
     private String Rid;
-
-    @ManyToOne
     private Student student;
-
-    @ManyToOne
     private Program program;
-
     private LocalDate date;
     private Double RegisterFee;
     private String PaymentStatus;
-
-
-
 }

@@ -1,9 +1,7 @@
 package lk.ijse.cw.bo;
 
-import lk.ijse.cw.bo.custom.impl.ProgramBOImpl;
+import lk.ijse.cw.bo.custom.impl.*;
 
-import lk.ijse.cw.bo.custom.impl.StudentBOImpl;
-import lk.ijse.cw.bo.custom.impl.UserBOImpl;
 import lk.ijse.cw.dao.custom.impl.UserDAOImpl;
 
 import static lk.ijse.cw.dao.DAOFactory.DAOType.User;
@@ -28,7 +26,7 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        User,Student,Course,Register
+        User,Student,Course,Register,Login
     }
 
 
@@ -41,6 +39,10 @@ public class BOFactory {
             case Course:
                 return new ProgramBOImpl();
             case Register:
+                return new RegisterBOImpl();
+            case Login:
+                return new LoginBOImpl();
+
 
 
         }

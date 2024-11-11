@@ -19,7 +19,7 @@
          </font>
       </Label>
       <TextField fx:id="duration" layoutX="216.0" layoutY="159.0" prefHeight="36.0" prefWidth="126.0" />
-      <TextField fx:id="txtname3" layoutX="59.0" layoutY="251.0" prefHeight="36.0" prefWidth="280.0" />
+      <TextField fx:id="txtfee" layoutX="59.0" layoutY="251.0" prefHeight="36.0" prefWidth="280.0" />
       <Label layoutX="216.0" layoutY="130.0" prefHeight="20.0" prefWidth="142.0" text="Programe Duration :">
          <font>
             <Font size="14.0" />
@@ -35,8 +35,8 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="sltProgram" layoutX="63.0" layoutY="73.0" prefHeight="36.0" prefWidth="280.0" style="-fx-background-color: white;" />
-      <TextField fx:id="txtNIC" layoutX="393.0" layoutY="73.0" prefHeight="36.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="sltProgram" layoutX="63.0" layoutY="73.0" onAction="#programNameOnAction" prefHeight="36.0" prefWidth="280.0" style="-fx-background-color: white;" />
+      <TextField fx:id="txtNIC" layoutX="393.0" layoutY="73.0" onAction="#NicOnAction" prefHeight="36.0" prefWidth="172.0" />
       <Label layoutX="393.0" layoutY="221.0" prefHeight="20.0" prefWidth="142.0" text="Student Cordinator :">
          <font>
             <Font size="14.0" />
@@ -88,18 +88,11 @@
             <TableColumn fx:id="colStuts" prefWidth="167.20001220703125" text="Status" />
         </columns>
       </TableView>
-      <JFXButton layoutX="972.0" layoutY="251.0" onAction="#btnAddCart" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #39cf5e;" text="Add Cart" />
-      <JFXButton layoutX="825.0" layoutY="584.0" onAction="#btnBuy" prefHeight="46.0" prefWidth="182.0" style="-fx-background-color: blue;" text="Purchase" />
+      <JFXButton layoutX="63.0" layoutY="582.0" onAction="#btnBuy" prefHeight="46.0" prefWidth="182.0" style="-fx-background-color: blue;" text="Purchase" />
       <TextField fx:id="txtBalance" layoutX="659.0" layoutY="251.0" prefHeight="36.0" prefWidth="242.0" />
       <Label layoutX="659.0" layoutY="221.0" prefHeight="20.0" prefWidth="142.0" text="Balance Fee :">
          <font>
             <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtCost" layoutX="237.0" layoutY="590.0" prefHeight="36.0" prefWidth="242.0" />
-      <Label layoutX="51.0" layoutY="589.0" prefHeight="20.0" prefWidth="142.0" text="Total Cost :">
-         <font>
-            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
       <JFXComboBox fx:id="sltStatus" layoutX="916.0" layoutY="159.0" prefHeight="36.0" prefWidth="190.0" style="-fx-background-color: white;" />

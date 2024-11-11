@@ -1,10 +1,7 @@
 package lk.ijse.cw.dao;
 
 import lk.ijse.cw.dao.custom.UserDAO;
-import lk.ijse.cw.dao.custom.impl.ProgramDAOImpl;
-import lk.ijse.cw.dao.custom.impl.RegisterDAOImpl;
-import lk.ijse.cw.dao.custom.impl.StudentDAOImpl;
-import lk.ijse.cw.dao.custom.impl.UserDAOImpl;
+import lk.ijse.cw.dao.custom.impl.*;
 import lk.ijse.cw.entity.User;
 
 public class DAOFactory {
@@ -18,7 +15,7 @@ public class DAOFactory {
     }
 
     public enum DAOType {
-        User,Student,Register,Course
+        User,Student,Register,Course,Login
     }
 
 
@@ -32,6 +29,8 @@ public class DAOFactory {
                 return new ProgramDAOImpl();
             case Register:
                 return new RegisterDAOImpl();
+            case Login:
+                return new LoginDAOImpl();
 
 
                 default:

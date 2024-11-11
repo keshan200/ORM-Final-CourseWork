@@ -1,11 +1,13 @@
 package lk.ijse.cw.bo.custom.impl;
 
+import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.bo.custom.StudentBO;
 import lk.ijse.cw.dao.DAOFactory;
 import lk.ijse.cw.dao.custom.StudentDAO;
 import lk.ijse.cw.dao.custom.UserDAO;
+import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.entity.User;
 import java.util.ArrayList;
@@ -86,4 +88,18 @@ public class StudentBOImpl implements StudentBO {
         }
         return null;
     }
+
+    @Override
+    public List<StudentDTO> SearchByNICstName(String nic) {
+        List<StudentDTO> allmat = new ArrayList<>();
+        List<Student> mat = StudetDAO.searchNameFromNIC(nic);
+
+        for (Student m : mat){
+            allmat.add(new StudentDTO(m.getName(),m.getUser()));
+        }
+        return allmat;
+    }
 }
+
+
+

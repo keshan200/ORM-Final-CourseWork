@@ -57,4 +57,23 @@ public class ProgramBOImpl implements ProgramBO {
     public ProgramDTO serachProgramr(String ProgramID) {
         return null;
     }
+
+    @Override
+    public List<String> getProgramrNames() {
+        return programDAO.getProgramName();
+    }
+
+    @Override
+    public List<ProgramDTO> SearchByProgramName(String programName) {
+        List<ProgramDTO> allmat = new ArrayList<>();
+        List<Program> mat = programDAO.SearchByProgramName(programName);
+
+        for (Program m : mat){
+            allmat.add(new ProgramDTO(m.getCId(),m.getDuration(),m.getFee()));
+        }
+        return allmat;
+    }
 }
+
+
+
