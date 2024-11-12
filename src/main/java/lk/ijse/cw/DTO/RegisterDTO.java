@@ -14,9 +14,13 @@ import java.time.LocalDate;
 public class RegisterDTO {
 
     private String Rid;
-    private Student student;
-    private Program program;
+    private StudentDTO student;
+    private ProgramDTO program;
     private LocalDate date;
     private Double RegisterFee;
+    private Double balance;
     private String PaymentStatus;
+
+
+
 }

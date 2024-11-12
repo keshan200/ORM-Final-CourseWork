@@ -54,7 +54,7 @@
          </font>
       </Label>
       <TextField fx:id="txtCordinator" layoutX="393.0" layoutY="251.0" prefHeight="36.0" prefWidth="172.0" />
-      <TextField fx:id="txtRegFee" layoutX="659.0" layoutY="159.0" prefHeight="36.0" prefWidth="202.0" />
+      <TextField fx:id="txtRegFee" layoutX="659.0" layoutY="159.0" onAction="#onBalance" prefHeight="36.0" prefWidth="202.0" />
       <Label layoutX="659.0" layoutY="130.0" prefHeight="20.0" prefWidth="142.0" text="Registeration Fee :">
          <font>
             <Font size="14.0" />
@@ -79,13 +79,12 @@
       <TableView fx:id="tblCart" layoutX="25.0" layoutY="330.0" prefHeight="214.0" prefWidth="1096.0">
         <columns>
           <TableColumn fx:id="colRegID" prefWidth="104.80001068115234" text="Reg ID" />
-          <TableColumn fx:id="colPid" prefWidth="108.0" text="program ID" />
-            <TableColumn fx:id="colNic" prefWidth="105.5999755859375" text="Stu.NIC" />
-            <TableColumn fx:id="colCid" prefWidth="135.20001220703125" text="Codi..ID" />
-            <TableColumn fx:id="colDate" prefWidth="140.79998779296875" text="Reg_Date" />
-            <TableColumn fx:id="colFee" prefWidth="176.00006103515625" text="Reg_Fee" />
-            <TableColumn fx:id="colBalFee" prefWidth="133.5999755859375" text="balance_Fee" />
-            <TableColumn fx:id="colStuts" prefWidth="167.20001220703125" text="Status" />
+          <TableColumn fx:id="colPid" prefWidth="185.60000610351562" text="program ID" />
+            <TableColumn fx:id="colNic" prefWidth="136.80001831054688" text="Stu.NIC" />
+            <TableColumn fx:id="colDate" prefWidth="147.20001220703125" text="Reg_Date" />
+            <TableColumn fx:id="colFee" prefWidth="136.7999267578125" text="Reg_Fee" />
+            <TableColumn fx:id="colStuts" prefWidth="205.60003662109375" text="Status" />
+            <TableColumn fx:id="txtBal" prefWidth="174.39996337890625" text="balance" />
         </columns>
       </TableView>
       <JFXButton layoutX="63.0" layoutY="582.0" onAction="#btnBuy" prefHeight="46.0" prefWidth="182.0" style="-fx-background-color: blue;" text="Purchase" />

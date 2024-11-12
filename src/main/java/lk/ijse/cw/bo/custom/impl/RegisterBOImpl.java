@@ -1,6 +1,8 @@
 package lk.ijse.cw.bo.custom.impl;
 
+import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.RegisterDTO;
+import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.bo.custom.RegisterBO;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.DAOFactory;
@@ -13,6 +15,7 @@ import lk.ijse.cw.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +30,7 @@ public class RegisterBOImpl implements RegisterBO {
     public boolean Register(RegisterDTO reg) {
         Student student = new Student(reg.getStudent().getNIC());
         Program program = new Program(reg.getProgram().getCId());
-        return registerDAO.save(new Register(reg.getRid(),student,program,reg.getDate(),reg.getRegisterFee(),reg.getPaymentStatus()));
+        return registerDAO.save(new Register(reg.getRid(),student,program,reg.getDate(),reg.getRegisterFee(),reg.getBalance(),reg.getPaymentStatus()));
     }
 
     @Override
@@ -44,7 +47,24 @@ public class RegisterBOImpl implements RegisterBO {
 
     @Override
     public List<RegisterDTO> getAll() {
-        return List.of();
+        ArrayList<RegisterDTO> reg = new ArrayList<>();
+
+        List<Register> entityList = registerDAO.getAll();
+
+        for (Register p : entityList) {
+
+            StudentDTO studentDTO = new StudentDTO(
+                    p.getStudent().getNIC()
+
+            );
+            ProgramDTO programDTO = new ProgramDTO(
+                    p.getProgram().getCId()
+            );
+
+            reg.add(new RegisterDTO(p.getRid(),studentDTO,programDTO,p.getDate(),p.getRegisterFee(),p.getBalance(),p.getPaymentStatus()));
+        }
+
+        return reg;
     }
 
     @Override
@@ -55,5 +75,10 @@ public class RegisterBOImpl implements RegisterBO {
     @Override
     public RegisterDTO serach(String ID) {
         return null;
+    }
+
+    @Override
+    public String generateNewID() throws SQLException, ClassNotFoundException {
+        return registerDAO.genarateNextID();
     }
 }

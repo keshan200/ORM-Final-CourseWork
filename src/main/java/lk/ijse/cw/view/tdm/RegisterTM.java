@@ -1,5 +1,7 @@
 package lk.ijse.cw.view.tdm;
 
+import lk.ijse.cw.DTO.ProgramDTO;
+import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Student;
 import lombok.AllArgsConstructor;
@@ -16,9 +18,13 @@ public class RegisterTM {
 
 
     private String Rid;
-    private Student student;
-    private Program program;
+    private StudentDTO student;
+    private ProgramDTO program;
     private LocalDate date;
     private Double RegisterFee;
+    private Double balance;
     private String PaymentStatus;
+
+
+
 }

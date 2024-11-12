@@ -91,7 +91,6 @@ public class StudentController {
         colGender.setCellValueFactory(new PropertyValueFactory<>("Gender"));
         colMail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-
     }
 
 

@@ -28,8 +28,10 @@ public class Student {
  private int tel;
  private String gender;
 
-@OneToMany(mappedBy = "student")
+@OneToMany(mappedBy = "student",cascade = CascadeType.ALL,orphanRemoval = true)
  List<Register>registers;
+
+
 
  public Student(String nic, String email, String address, int tel) {
   this.NIC = nic;

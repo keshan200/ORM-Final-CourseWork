@@ -29,9 +29,9 @@ public class LoginController {
 
     private LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.Login);
 
-    // Temporary login credentials for testing purposes
-    private final String temporaryUserName = "admin";
-    private final String temporaryPassword = "admin";
+
+    private final String temporaryUserName = "1";
+    private final String temporaryPassword = "1";
 
     @FXML
     public void initialize() {
@@ -45,18 +45,15 @@ public class LoginController {
 
         try {
             if (userName.equals(temporaryUserName) && password.equals(temporaryPassword)) {
-                // Temporary login setup
                 UserSession.getInstance().setUser(123, "admin");
                 navigateToTheDashboard((Stage) txtuID.getScene().getWindow());
             } else {
-                // Check credentials using the LoginBO
                 LoginDTO loginDTO = new LoginDTO(userName, password);
                 boolean loginResult = loginBO.checkCredential(loginDTO);
 
                 if (loginResult) {
                     navigateToTheDashboard((Stage) txtuID.getScene().getWindow());
                 } else {
-                    // Show alert if credentials are incorrect
                     new Alert(Alert.AlertType.ERROR, "Invalid credentials! Please try again.").show();
                 }
             }
@@ -66,13 +63,11 @@ public class LoginController {
         }
     }
 
-    // Setup enter button action to move cursor between fields
     private void clickEnterButtonMoveCursor() {
         txtuID.setOnAction(event -> txtPass.requestFocus());
         txtPass.setOnAction(this::btnLogin);
     }
 
-    // Method to navigate to the dashboard
     private void navigateToTheDashboard(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view_forms/dahsboard.fxml"));
         Parent root = loader.load();
@@ -80,6 +75,7 @@ public class LoginController {
 
         stage.setScene(scene);
         stage.setTitle("Dashboard");
+        stage.centerOnScreen();
         stage.show();
     }
 }

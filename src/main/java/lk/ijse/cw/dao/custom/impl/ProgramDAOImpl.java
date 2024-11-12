@@ -32,31 +32,47 @@ public class ProgramDAOImpl implements ProgramDAO {
     @Override
     public boolean update(Program entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(entity);
-        transaction.commit();
-        session.close();
-        return true;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.update(entity);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+
     }
 
-    @Override
-    public boolean delete(String id) {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("delete from Program where cId = ?1");
-        query.setParameter(1, id);
+@Override
+public boolean delete(String id) {
+    Session session = FactoryConfiguration.getInstance().getSession();
+    Transaction transaction = session.beginTransaction();
 
-        boolean Delete = query.executeUpdate() > 0;
-
-        if (Delete) {
+    try {
+        Program program = session.get(Program.class, id);
+        if (program != null) {
+            session.delete(program);
             transaction.commit();
             session.close();
             return true;
         }
-        return false;
-
+    } catch (Exception e) {
+        e.printStackTrace();
+        if (transaction != null) {
+            transaction.rollback();
+        }
     }
+    return false;
+}
+
 
     @Override
     public List<Program> getAll() {

@@ -155,7 +155,6 @@ public class ProgrammeController {
     }
 
 
-
     @FXML
     void btnSave(ActionEvent event) {
 
@@ -167,6 +166,25 @@ public class ProgrammeController {
         ProgramDTO programDTO = new ProgramDTO(id,name,duration,fee);
         boolean isSaved = programBO.saveProgram(programDTO);
 
+        if (txtID.getText().trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Program ID cannot be empty").show();
+            return;
+        }
+        if (txtname.getText().trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Program name cannot be empty").show();
+            return;
+        }
+        if (txtDuration.getText().trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Duration cannot be empty").show();
+            return;
+        }
+        if (txtFee.getText().trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Fee cannot be empty").show();
+            return;
+        }
+
+        
+        
         System.out.println("pDTO"+programDTO);
         if (isSaved) {
             new Alert(Alert.AlertType.CONFIRMATION,"Course has been registered successfully").show();
@@ -178,6 +196,27 @@ public class ProgrammeController {
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        ProgramTM selectedProgram = tblCourse.getSelectionModel().getSelectedItem();
 
+        if (selectedProgram == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select a program to update.").show();
+            return;
+        }
+
+        String id = txtID.getText();
+        String name = txtname.getText();
+        String duration = txtDuration.getText();
+        Double fee = Double.valueOf(txtFee.getText());
+
+        ProgramDTO programDTO = new ProgramDTO(id, name, duration, fee);
+        boolean isUpdated = programBO.updateProgram(programDTO);
+
+        if (isUpdated) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Program updated successfully!").show();
+            loadAllProgram();
+            clear();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Failed to update the program. Please try again.").show();
+        }
     }
 }

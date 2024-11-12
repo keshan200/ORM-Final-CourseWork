@@ -35,13 +35,14 @@ public class StudentDAOImpl implements StudentDAO {
 
 
     @Override
-    public boolean update(Student entity) {
+    public boolean update(Student student) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        session.update(entity);
+        session.update(student);
         transaction.commit();
         session.close();
         return true;
+
     }
 
 
@@ -51,15 +52,19 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("delete from Student where NIC = ?1");
-        query.setParameter(1, id);
-
-        boolean Delete = query.executeUpdate() > 0;
-
-        if (Delete) {
-            transaction.commit();
-            session.close();
-            return true;
+        try {
+            Student student = session.get(Student.class, id);
+            if (student != null) {
+                session.delete(student);
+                transaction.commit();
+                session.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
         return false;
     }

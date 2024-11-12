@@ -1,9 +1,7 @@
 package lk.ijse.cw.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,14 +18,17 @@ public class Register {
     @Id
     private String Rid;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(nullable = false)
     private Student student;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(nullable = false)
     private Program program;
 
     private LocalDate date;
     private Double RegisterFee;
+    private Double balance;
     private String PaymentStatus;
 
 

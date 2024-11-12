@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.RegisterDTO;
 import lk.ijse.cw.DTO.StudentDTO;
@@ -15,6 +16,9 @@ import lk.ijse.cw.bo.custom.RegisterBO;
 import lk.ijse.cw.bo.custom.StudentBO;
 import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Student;
+import lk.ijse.cw.view.tdm.ProgramTM;
+import lk.ijse.cw.view.tdm.RegisterTM;
+import lk.ijse.cw.view.tdm.StudentTM;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -47,6 +51,9 @@ public class RegisterController {
     private TableColumn<?, ?> colStuts;
 
     @FXML
+    private TableColumn<?, ?> txtBal;
+
+    @FXML
     private DatePicker dtDate;
 
     @FXML
@@ -59,7 +66,7 @@ public class RegisterController {
     private JFXComboBox<String> sltStatus;
 
     @FXML
-    private TableView<?> tblCart;
+    private TableView<RegisterTM> tblCart;
 
     @FXML
     private TextField txtBalance;
@@ -96,10 +103,149 @@ public class RegisterController {
 
 
 
-    public void initialize() {
+    public void initialize(){
         getCourseNames();
         setSltStatus();
+        generateNewID();
+        loadAllProgram();
+        setCellVslues();
+        balanceCalculate();
+        StatusChange();
+        ShowSelectedSTUDetails();
+
+        setupRowSelectionListener();
     }
+
+
+    private void clearField(){
+        txtBalance.setText("");
+        txtCordinator.setText("");
+        txtNIC.setText("");
+        txtProgrmID.setText("");
+        txtfee.setText("");
+        txtRegFee.setText("");
+        txtstuName.setText("");
+        sltProgram.setValue("");
+        sltStatus.setValue("");
+        dtDate.setValue(null);
+        duration.setText("");
+    }
+
+
+    private void StatusChange() {
+        sltStatus.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if ("Complete".equals(newValue)) {
+                txtBalance.setText("0.00");
+            }
+        });
+    }
+
+    private void setCellVslues(){
+        colRegID.setCellValueFactory(new PropertyValueFactory<>("Rid"));
+        colPid.setCellValueFactory(new PropertyValueFactory<>("program_cId"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("student_NIC"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colFee.setCellValueFactory(new PropertyValueFactory<>("RegisterFee"));
+        colStuts.setCellValueFactory(new PropertyValueFactory<>("PaymentStatus"));
+        txtBal.setCellValueFactory(new PropertyValueFactory<>("Balance"));
+
+
+    }
+
+    private void ShowSelectedSTUDetails(){
+       /* RegisterTM selectedVal = tblCart.getSelectionModel().getSelectedItem();
+        tblCart.setOnMouseClicked(event -> ShowSelectedSTUDetails());
+
+        if (selectedVal != null) {
+            txtNIC.setText(selectedVal.getStudent().getNIC());
+            txtRegID.setText(selectedVal.getRid());
+            txtProgrmID.setText(selectedVal.getProgram().getCId());
+            sltProgram.setValue(selectedVal.getProgram().getCName());
+            duration.setText(selectedVal.getProgram().getDuration());
+            txtfee.setText(String.valueOf(selectedVal.getProgram().getFee()));
+            txtstuName.setText(selectedVal.getStudent().getName());
+            txtCordinator.setText(String.valueOf(selectedVal.getStudent().getUser()));
+            txtRegFee.setText(String.valueOf(selectedVal.getProgram().getFee()));
+            dtDate.setValue(selectedVal.getDate());
+            sltStatus.setValue(selectedVal.getPaymentStatus());
+
+        }*/
+    }
+
+
+
+    private void setupRowSelectionListener() {
+        // Set up the row selection listener to display details in text fields
+        tblCart.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                populateFieldsFromSelectedRow(newValue);
+            }
+        });
+    }
+
+    private void populateFieldsFromSelectedRow(RegisterTM selectedVal) {
+        txtNIC.setText(selectedVal.getStudent().getNIC());
+        txtRegID.setText(selectedVal.getRid());
+        txtProgrmID.setText(selectedVal.getProgram().getCId());
+        sltProgram.setValue(selectedVal.getProgram().getCName());
+        duration.setText(selectedVal.getProgram().getDuration());
+        txtfee.setText(String.valueOf(selectedVal.getProgram().getFee()));
+        txtstuName.setText(selectedVal.getStudent().getName());
+        txtCordinator.setText(String.valueOf(selectedVal.getStudent().getUser()));
+        txtRegFee.setText(String.valueOf(selectedVal.getRegisterFee()));
+        dtDate.setValue(selectedVal.getDate());
+        sltStatus.setValue(selectedVal.getPaymentStatus());
+    }
+    private void balanceCalculate(){
+        try {
+
+            double programFee = txtfee.getText().isEmpty() ? 0.0 : Double.parseDouble(txtfee.getText());
+            double regFee = txtRegFee.getText().isEmpty() ? 0.0 : Double.parseDouble(txtRegFee.getText());
+            double balance = programFee - regFee;
+            txtBalance.setText(String.format("%.2f", balance));
+
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter valid numbers for the fees.");
+            alert.showAndWait();
+        }
+    }
+
+
+    @FXML
+    void onBalance(ActionEvent event) {
+           balanceCalculate();
+    }
+
+
+    private void loadAllProgram() {
+        ObservableList<RegisterTM> list = FXCollections.observableArrayList();
+
+        try {
+            List<RegisterDTO> regDTOList = registerBO.getAll();
+            for (RegisterDTO reg : regDTOList) {
+                RegisterTM registerTM = new RegisterTM(
+                        reg.getRid(),
+                        reg.getStudent(),
+                        reg.getProgram(),
+                        reg.getDate(),
+                        reg.getRegisterFee(),
+                        reg.getBalance(),
+                        reg.getPaymentStatus()
+                );
+                list.add(registerTM);
+            }
+
+            tblCart.setItems(list);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
@@ -115,21 +261,32 @@ public class RegisterController {
 
     }
 
+    private void generateNewID() {
+        try {
+            String nextRegId = registerBO.generateNewID();
+
+            txtRegID.setText(String.valueOf(nextRegId));
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @FXML
-    void btnBuy(ActionEvent event) {
+    void btnBuy(ActionEvent event){
 
         String rId = txtRegID.getText();
         String NIC = txtNIC.getText();
         String pId = txtProgrmID.getText();
         LocalDate date = dtDate.getValue();
         Double registerFee = Double.parseDouble(txtRegFee.getText());
+        Double balance = Double.parseDouble(txtBalance.getText());
         String status =  sltStatus.getValue();
 
-        Student studentDTO = new Student(NIC);
-        Program programDTO = new Program(pId);
+        StudentDTO studentDTO = new StudentDTO(NIC);
+        ProgramDTO programDTO = new ProgramDTO(pId);
 
-        RegisterDTO registerDTO = new RegisterDTO(rId,studentDTO,programDTO,date,registerFee,status);
+        RegisterDTO registerDTO = new RegisterDTO(rId,studentDTO,programDTO,date,registerFee,balance,status);
 
         boolean idRegisterd = registerBO.Register(registerDTO);
 
@@ -138,6 +295,9 @@ public class RegisterController {
             alert.setTitle("Information");
             alert.setContentText("Registration is done");
             alert.showAndWait();
+            clearField();
+            generateNewID();
+            loadAllProgram();
         }else{
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

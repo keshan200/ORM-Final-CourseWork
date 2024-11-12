@@ -1,4 +1,5 @@
 package lk.ijse.cw.entity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -23,7 +24,7 @@ public class Program {
     private Double fee;
 
 
-    @OneToMany(mappedBy = "program")
+    @OneToMany(mappedBy = "program",cascade = CascadeType.ALL,orphanRemoval = true)
     List<Register> registers;
 
     public Program(String cId) {
