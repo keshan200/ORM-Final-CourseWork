@@ -15,6 +15,7 @@ import lk.ijse.cw.bo.custom.ProgramBO;
 import lk.ijse.cw.bo.custom.RegisterBO;
 import lk.ijse.cw.bo.custom.StudentBO;
 import lk.ijse.cw.entity.Program;
+import lk.ijse.cw.entity.Register;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.view.tdm.ProgramTM;
 import lk.ijse.cw.view.tdm.RegisterTM;
@@ -113,8 +114,12 @@ public class RegisterController {
         StatusChange();
         ShowSelectedSTUDetails();
 
-        setupRowSelectionListener();
+/*        setupRowSelectionListener();*/
+
     }
+
+
+
 
 
     private void clearField(){
@@ -142,18 +147,20 @@ public class RegisterController {
 
     private void setCellVslues(){
         colRegID.setCellValueFactory(new PropertyValueFactory<>("Rid"));
-        colPid.setCellValueFactory(new PropertyValueFactory<>("program_cId"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("student_NIC"));
+        colPid.setCellValueFactory(new PropertyValueFactory<>("programCID"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("studentNIC"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colFee.setCellValueFactory(new PropertyValueFactory<>("RegisterFee"));
         colStuts.setCellValueFactory(new PropertyValueFactory<>("PaymentStatus"));
         txtBal.setCellValueFactory(new PropertyValueFactory<>("Balance"));
-
-
     }
 
+
+
+
+
     private void ShowSelectedSTUDetails(){
-       /* RegisterTM selectedVal = tblCart.getSelectionModel().getSelectedItem();
+        RegisterTM selectedVal = tblCart.getSelectionModel().getSelectedItem();
         tblCart.setOnMouseClicked(event -> ShowSelectedSTUDetails());
 
         if (selectedVal != null) {
@@ -165,37 +172,20 @@ public class RegisterController {
             txtfee.setText(String.valueOf(selectedVal.getProgram().getFee()));
             txtstuName.setText(selectedVal.getStudent().getName());
             txtCordinator.setText(String.valueOf(selectedVal.getStudent().getUser()));
-            txtRegFee.setText(String.valueOf(selectedVal.getProgram().getFee()));
+            txtRegFee.setText(String.valueOf(selectedVal.getRegisterFee()));
+            txtBalance.setText(String.valueOf(selectedVal.getBalance()));
             dtDate.setValue(selectedVal.getDate());
             sltStatus.setValue(selectedVal.getPaymentStatus());
 
-        }*/
+        }
+
     }
 
 
 
-    private void setupRowSelectionListener() {
-        // Set up the row selection listener to display details in text fields
-        tblCart.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                populateFieldsFromSelectedRow(newValue);
-            }
-        });
-    }
 
-    private void populateFieldsFromSelectedRow(RegisterTM selectedVal) {
-        txtNIC.setText(selectedVal.getStudent().getNIC());
-        txtRegID.setText(selectedVal.getRid());
-        txtProgrmID.setText(selectedVal.getProgram().getCId());
-        sltProgram.setValue(selectedVal.getProgram().getCName());
-        duration.setText(selectedVal.getProgram().getDuration());
-        txtfee.setText(String.valueOf(selectedVal.getProgram().getFee()));
-        txtstuName.setText(selectedVal.getStudent().getName());
-        txtCordinator.setText(String.valueOf(selectedVal.getStudent().getUser()));
-        txtRegFee.setText(String.valueOf(selectedVal.getRegisterFee()));
-        dtDate.setValue(selectedVal.getDate());
-        sltStatus.setValue(selectedVal.getPaymentStatus());
-    }
+
+
     private void balanceCalculate(){
         try {
 
@@ -271,7 +261,6 @@ public class RegisterController {
         }
     }
 
-
     @FXML
     void btnBuy(ActionEvent event){
 
@@ -306,10 +295,6 @@ public class RegisterController {
         }
 
     }
-
-
-
-
     @FXML
     void programNameOnAction(ActionEvent event) {
 
@@ -324,17 +309,16 @@ public class RegisterController {
         }
     }
 
-
     void setSltStatus() {
         ObservableList<String> list = FXCollections.observableArrayList("Complete", "Pending", "Incomplete");
         sltStatus.setItems(list);
     }
 
 
-
     @FXML
     void NicOnAction(ActionEvent event) {
-        String nic = txtNIC.getText();
+        String nic = txtNIC.getText().trim();
+
 
         List<StudentDTO> cList = studentBO.SearchByNICstName(nic);
         if (!cList.isEmpty()) {
@@ -345,5 +329,40 @@ public class RegisterController {
               txtCordinator.setText(String.valueOf(stmodel.getUser().getUID()));
         }
 
+        if (!nic.isEmpty()) {
+            try {
+                List<RegisterDTO> regList = registerBO.getRegisterationByNIC(nic);
+                if (!regList.isEmpty()) {
+                    tblCart.getItems().clear();
+                    loadRegister(regList);
+                    System.out.println(regList);
+                } else {
+                    tblCart.getItems().clear();
+                    new Alert(Alert.AlertType.INFORMATION, "No payments found for the provided NIC.").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Error occurred while fetching payments: " + e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please enter a NIC.").show();
+        }
+
+    }
+
+
+    private void loadRegister(List<RegisterDTO> regList) {
+        tblCart.getItems().clear();
+        for (RegisterDTO reg : regList) {
+            RegisterTM registerTM = new RegisterTM(
+                    reg.getRid(),
+                    reg.getStudent(),
+                    reg.getProgram(),
+                    reg.getDate(),
+                    reg.getRegisterFee(),
+                    reg.getBalance(),
+                    reg.getPaymentStatus()
+            );
+            tblCart.getItems().add(registerTM);
+        }
     }
 }

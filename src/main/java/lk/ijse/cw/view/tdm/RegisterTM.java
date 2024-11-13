@@ -25,6 +25,12 @@ public class RegisterTM {
     private Double balance;
     private String PaymentStatus;
 
+    public String getStudentNIC() {
+        return student != null ? student.getNIC() : null;
+    }
 
+    public String getProgramCID() {
+        return program != null ? program.getCId() : null;
+    }
 
 }

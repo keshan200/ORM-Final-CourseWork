@@ -4,16 +4,11 @@ import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.RegisterDTO;
 import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.bo.custom.RegisterBO;
-import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.DAOFactory;
-import lk.ijse.cw.dao.custom.ProgramDAO;
 import lk.ijse.cw.dao.custom.RegisterDAO;
-import lk.ijse.cw.dao.custom.StudentDAO;
 import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Register;
 import lk.ijse.cw.entity.Student;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,5 +75,27 @@ public class RegisterBOImpl implements RegisterBO {
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException {
         return registerDAO.genarateNextID();
+    }
+
+    @Override
+    public List<RegisterDTO> getRegisterationByNIC(String nic) throws SQLException {
+        ArrayList<RegisterDTO> reg = new ArrayList<>();
+
+        List<Register> entityList = registerDAO.getRegisterationByNIC(nic);
+
+        for (Register p : entityList) {
+
+            StudentDTO studentDTO = new StudentDTO(
+                    p.getStudent().getNIC()
+
+            );
+            ProgramDTO programDTO = new ProgramDTO(
+                    p.getProgram().getCId()
+            );
+
+            reg.add(new RegisterDTO(p.getRid(),studentDTO,programDTO,p.getDate(),p.getRegisterFee(),p.getBalance(),p.getPaymentStatus()));
+        }
+
+        return reg;
     }
 }

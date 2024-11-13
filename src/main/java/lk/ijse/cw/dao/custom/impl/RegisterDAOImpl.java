@@ -8,9 +8,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class RegisterDAOImpl implements RegisterDAO {
+
+
+
+
     @Override
     public boolean save(Register entity) {
         Session session = FactoryConfiguration.getInstance().getSession();
@@ -27,7 +32,7 @@ public class RegisterDAOImpl implements RegisterDAO {
     }
 
     @Override
-    public boolean update(Register entity) {
+    public boolean update(Register entity){
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = null;
         try {
@@ -47,12 +52,12 @@ public class RegisterDAOImpl implements RegisterDAO {
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(String id){
         return false;
     }
 
     @Override
-    public List<Register> getAll() {
+    public List<Register> getAll(){
 
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
@@ -87,5 +92,18 @@ public class RegisterDAOImpl implements RegisterDAO {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<Register> getRegisterationByNIC(String Nic) throws SQLException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        List<Register> reg = session.createQuery("from Register where student.NIC = :nic", Register.class)
+                .setParameter("nic", Nic)
+                .list();
+
+        transaction.commit();
+        session.close();
+        return reg;
     }
 }

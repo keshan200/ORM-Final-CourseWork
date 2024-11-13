@@ -1,9 +1,8 @@
 package lk.ijse.cw.bo.custom;
 
 import lk.ijse.cw.DTO.RegisterDTO;
-import lk.ijse.cw.DTO.StudentDTO;
-import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.bo.SuperBO;
+import lk.ijse.cw.entity.Register;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,4 +20,6 @@ public interface RegisterBO extends SuperBO {
     RegisterDTO serach(String ID);
 
     String generateNewID() throws SQLException, ClassNotFoundException;
+
+    List<RegisterDTO> getRegisterationByNIC(String nic) throws SQLException;
 }
