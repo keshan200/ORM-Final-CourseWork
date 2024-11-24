@@ -10,38 +10,36 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 public class LoginDAOImpl implements LoginDAO {
-
     @Override
-    public boolean checkCredential(Login login) throws SQLException, IOException, ClassNotFoundException {
+    public boolean checkCredentials(Login login) {
         Session session = FactoryConfiguration.getInstance().getSession();
+
         try {
-            Query<User> query = session.createQuery("FROM User u WHERE u.name = :username", User.class);
-            query.setParameter("username", login.getUserName());
+            Query<User> query = session.createQuery("from User where name = :username", User.class);
+            query.setParameter("username",login.getUserName());
 
             User user = query.uniqueResult();
 
-            if (user != null) {
+            if(user !=null) {
                 if (BCrypt.checkpw(login.getPassword(), user.getPassword())) {
 
-
-                    session = FactoryConfiguration.getInstance().getSession();
-                    UserSession.getInstance().setUser(Integer.parseInt(user.getUID()), user.getRole());
+                  session  =  FactoryConfiguration.getInstance().getSession();
+                    UserSession.getInstance().setUser(Integer.parseInt(user.getUID()),user.getRole());
                     return true;
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Sorry! Password is incorrect!").show();
+
+                }else {
+                    new Alert(Alert.AlertType.ERROR, "Invalid Password").show();
                     return false;
                 }
-            } else {
-                new Alert(Alert.AlertType.INFORMATION, "Sorry! User ID can't be found!").show();
+
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Invalid UserID").show();
                 return false;
             }
-        } finally {
+
+        }finally {
             session.close();
         }
     }
-
 }

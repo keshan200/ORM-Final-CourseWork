@@ -29,8 +29,10 @@ public class RegisterBOImpl implements RegisterBO {
     }
 
     @Override
-    public boolean update(RegisterDTO Register) {
-        return false;
+    public boolean update(RegisterDTO register) {
+        Student student = new Student(register.getStudent().getNIC());
+        Program program = new Program(register.getProgram().getCId());
+        return registerDAO.update(new Register(register.getRid(),student,program,register.getDate(),register.getRegisterFee(),register.getBalance(),register.getPaymentStatus()));
     }
 
     @Override

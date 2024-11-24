@@ -12,6 +12,7 @@ import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.bo.BOFactory;
 import lk.ijse.cw.bo.custom.UserBO;
 import lk.ijse.cw.entity.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserRegController {
 
@@ -54,7 +55,9 @@ public class UserRegController {
         String role = txtRole.getValue();//combo
 
 
-        UserDTO user = new UserDTO(userID, userPass, mail, name, role);
+        String hashedPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+
+        UserDTO user = new UserDTO(userID, hashedPass, mail, name, role);
 
         boolean isSaved = userBO.saveUser(user);
 

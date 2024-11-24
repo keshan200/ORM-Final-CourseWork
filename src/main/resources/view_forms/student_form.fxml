@@ -7,21 +7,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancStu" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.StudentController">
+<AnchorPane fx:id="ancStu" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: white; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.StudentController">
    <children>
-      <TextField fx:id="txtNIC" layoutX="29.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" />
+      <ImageView fitHeight="667.0" fitWidth="1146.0" layoutY="-4.0" opacity="0.09" pickOnBounds="true">
+         <image>
+            <Image url="@../images/back.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtNIC" layoutX="29.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" style="-fx-background-radius: 10;" />
       <Label layoutX="29.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="Student NIC :">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtMail" layoutX="29.0" layoutY="141.0" prefHeight="36.0" prefWidth="551.0" />
-      <TextField fx:id="txtTel" layoutX="27.0" layoutY="319.0" prefHeight="36.0" prefWidth="239.0" />
-      <TextField fx:id="txtName" layoutX="305.0" layoutY="64.0" prefHeight="36.0" prefWidth="276.0" />
-      <TextField fx:id="txtAdrs" layoutX="27.0" layoutY="229.0" prefHeight="36.0" prefWidth="315.0" />
+      <TextField fx:id="txtMail" layoutX="29.0" layoutY="141.0" prefHeight="36.0" prefWidth="551.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtTel" layoutX="27.0" layoutY="319.0" prefHeight="36.0" prefWidth="239.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtName" layoutX="305.0" layoutY="64.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtAdrs" layoutX="27.0" layoutY="229.0" prefHeight="36.0" prefWidth="315.0" style="-fx-background-radius: 10;" />
       <TableView fx:id="tblStu" layoutX="22.0" layoutY="381.0" prefHeight="264.0" prefWidth="1102.0">
         <columns>
           <TableColumn fx:id="colNIc" prefWidth="163.9999656677246" text="NIC" />
@@ -62,13 +69,25 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="711.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="168.0" text="Save" />
-      <Button layoutX="711.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="36.0" prefWidth="168.0" text="Update" />
-      <Button layoutX="919.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="36.0" prefWidth="168.0" text="Delete" />
-      <Button layoutX="919.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="36.0" prefWidth="168.0" text="Clear" />
-      <DatePicker fx:id="DpBDay" layoutX="305.0" layoutY="319.0" prefHeight="36.0" prefWidth="276.0" />
-      <JFXComboBox fx:id="drpGender" layoutX="364.0" layoutY="229.0" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: white;" />
-      <TextField fx:id="txtCid" layoutX="864.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" />
+      <Button layoutX="659.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Save">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button layoutX="969.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="38.0" prefWidth="118.0" style="-fx-background-radius: 10; -fx-background-color: #6B8E23;" text="Update">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button layoutX="969.0" layoutY="228.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="38.0" prefWidth="118.0" style="-fx-background-radius: 10; -fx-background-color: #B22222;" text="Delete">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button layoutX="818.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="38.0" prefWidth="118.0" style="-fx-background-radius: 10;" text="Clear">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <DatePicker fx:id="DpBDay" layoutX="305.0" layoutY="319.0" prefHeight="36.0" prefWidth="276.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <JFXComboBox fx:id="drpGender" layoutX="364.0" layoutY="229.0" prefHeight="36.0" prefWidth="214.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtCid" layoutX="864.0" layoutY="64.0" prefHeight="36.0" prefWidth="247.0" style="-fx-background-radius: 10;" />
       <Label layoutX="864.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="Cordinator ID :">
          <font>
             <Font size="14.0" />

@@ -9,40 +9,74 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="775.0" prefWidth="1345.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.DashBoardController">
+<AnchorPane fx:id="rootNode" prefHeight="775.0" prefWidth="1345.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.DashBoardController">
    <children>
       <Pane layoutX="14.0" layoutY="107.0" prefHeight="659.0" prefWidth="163.0" style="-fx-background-radius: 30; -fx-background-color: #DCDCDC;">
          <children>
-            <Button layoutX="37.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnHome" prefHeight="40.0" prefWidth="89.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" text="Home">
+            <ImageView fitHeight="60.0" fitWidth="62.0" layoutX="55.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stu.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="56.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/home.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="47.0" layoutY="75.0" mnemonicParsing="false" onAction="#btnHome" opacity="0.0" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="21.0" layoutY="250.0" mnemonicParsing="false" onAction="#btnPrgrm" prefHeight="40.0" prefWidth="132.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;" text="Programmes">
+            <Button fx:id="btnPro" layoutX="16.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnPrgrm" prefHeight="70.0" prefWidth="132.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/course.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="47.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnStu" opacity="0.0" prefHeight="76.0" prefWidth="77.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="36.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnStu" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;" text="Students">
+            <Button layoutX="45.0" layoutY="270.0" mnemonicParsing="false" onAction="#btnReg" prefHeight="60.0" prefWidth="77.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/register.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button layoutX="19.0" layoutY="355.0" mnemonicParsing="false" onAction="#btnReg" prefHeight="34.0" prefWidth="142.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;" text="Registrations">
+            <Button layoutX="31.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="34.0" prefWidth="108.0" style="-fx-background-radius: 10;" text="LogOut" />
+            <Button fx:id="btnUser" layoutX="32.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnSetting" prefHeight="70.0" prefWidth="100.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
-            </Button>
-            <Button layoutX="33.0" layoutY="503.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="34.0" prefWidth="108.0" text="LogOut" />
-            <Button layoutX="36.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnSetting" prefHeight="34.0" prefWidth="100.0" style="-fx-border-radius: 30%;" text="Settings" />
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </Pane>
       <Pane layoutX="13.0" layoutY="14.0" prefHeight="76.0" prefWidth="1320.0" style="-fx-background-radius: 20; -fx-background-color: #DCDCDC;">
          <children>
             <Circle fill="WHITE" layoutX="945.0" layoutY="39.0" radius="26.0" stroke="WHITE" strokeType="INSIDE" />
-            <ImageView fitHeight="60.0" fitWidth="224.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="175.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true">
                <image>
-                  <Image url="@../images/img.png" />
+                  <Image url="@../images/logo.png" />
                </image>
             </ImageView>
             <Label fx:id="lblName" layoutX="1109.0" layoutY="18.0" prefHeight="40.0" prefWidth="189.0" text=" Keshan Silva">

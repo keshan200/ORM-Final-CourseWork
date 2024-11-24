@@ -58,7 +58,7 @@ public class RegisterController {
     private DatePicker dtDate;
 
     @FXML
-    private TextField duration;
+    private Label duration;
 
     @FXML
     private JFXComboBox<String> sltProgram;
@@ -73,7 +73,7 @@ public class RegisterController {
     private TextField txtBalance;
 
     @FXML
-    private TextField txtCordinator;
+    private Label txtCordinator;
 
     @FXML
     private TextField txtCost;
@@ -82,7 +82,7 @@ public class RegisterController {
     private TextField txtNIC;
 
     @FXML
-    private TextField txtProgrmID;
+    private Label  txtProgrmID;
 
     @FXML
     private TextField txtRegFee;
@@ -91,10 +91,10 @@ public class RegisterController {
     private TextField txtRegID;
 
     @FXML
-    private TextField txtfee;
+    private Label txtfee;
 
     @FXML
-    private TextField txtstuName;
+    private Label txtstuName;
 
 
 
@@ -134,6 +134,7 @@ public class RegisterController {
         sltStatus.setValue("");
         dtDate.setValue(null);
         duration.setText("");
+        txtRegID.setText("");
     }
 
 
@@ -325,7 +326,6 @@ public class RegisterController {
 
             StudentDTO stmodel =cList.get(0);
               txtstuName.setText(stmodel.getName());
-              txtstuName.setEditable(false);
               txtCordinator.setText(String.valueOf(stmodel.getUser().getUID()));
         }
 
@@ -365,4 +365,50 @@ public class RegisterController {
             tblCart.getItems().add(registerTM);
         }
     }
+
+    void clear(){
+        txtRegID.setText("");
+        txtNIC.setText("");
+        txtProgrmID.setText("");
+        dtDate.setValue(null);
+        txtRegFee.setText("");
+        txtBalance.setText("");
+        sltStatus.setValue("");
+    }
+
+
+    @FXML
+    void update(ActionEvent event) {
+        String rid = txtRegID.getText();
+        String nic = txtNIC.getText();
+        String pid = txtProgrmID.getText();
+        LocalDate date = dtDate.getValue();
+        Double regfee = Double.valueOf(txtRegFee.getText());
+        Double balance = Double.valueOf(txtBalance.getText());
+        String status = sltStatus.getValue();
+
+        StudentDTO student = new StudentDTO(nic);
+        ProgramDTO program = new ProgramDTO(pid);
+        RegisterDTO register = new RegisterDTO(rid,student,program,date,regfee,balance,status);
+
+
+
+        System.out.println(register);
+
+        boolean isUpdate = registerBO.update(register);
+
+        if (isUpdate) {
+            new Alert(Alert.AlertType.INFORMATION,"Registered Student has been updated successfully").show();
+            loadAllProgram();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Something went wrong!").show();
+        }
+    }
+
+    @FXML
+    void clear(ActionEvent event) {
+        clearField();
+    }
 }
+
+

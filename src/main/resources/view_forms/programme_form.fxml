@@ -5,21 +5,31 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancCourse" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.ProgrammeController">
+<AnchorPane fx:id="ancCourse" prefHeight="659.0" prefWidth="1146.0" style="-fx-background-color: white; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.ProgrammeController">
    <children>
-      <Button layoutX="58.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="142.0" text="Save" />
-      <TextField fx:id="txtID" layoutX="58.0" layoutY="86.0" prefHeight="36.0" prefWidth="302.0" />
+      <ImageView fitHeight="659.0" fitWidth="1146.0" opacity="0.14" pickOnBounds="true">
+         <image>
+            <Image url="@../images/back.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="58.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="142.0" style="-fx-background-radius: 10; -fx-background-color: #1E90FF;" text="Save">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <TextField fx:id="txtID" layoutX="58.0" layoutY="86.0" prefHeight="36.0" prefWidth="302.0" style="-fx-background-radius: 10;" />
       <Label layoutX="58.0" layoutY="56.0" prefHeight="20.0" prefWidth="118.0" text="Programe ID :">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDuration" layoutX="58.0" layoutY="313.0" prefHeight="36.0" prefWidth="302.0" />
-      <TextField fx:id="txtname" layoutX="57.0" layoutY="213.0" prefHeight="36.0" prefWidth="302.0" />
-      <TextField fx:id="txtFee" layoutX="58.0" layoutY="417.0" prefHeight="36.0" prefWidth="301.0" />
+      <TextField fx:id="txtDuration" layoutX="58.0" layoutY="313.0" prefHeight="36.0" prefWidth="302.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtname" layoutX="57.0" layoutY="213.0" prefHeight="36.0" prefWidth="302.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtFee" layoutX="58.0" layoutY="417.0" prefHeight="36.0" prefWidth="301.0" style="-fx-background-radius: 10;" />
       <Label layoutX="58.0" layoutY="389.0" prefHeight="20.0" prefWidth="136.0" text="Programe Fee (LKR) :">
          <font>
             <Font size="14.0" />
@@ -35,9 +45,18 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="240.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="36.0" prefWidth="118.0" text="Update" />
-      <Button layoutX="58.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="36.0" prefWidth="142.0" text="Delete" />
-      <Button layoutX="240.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="36.0" prefWidth="118.0" text="Clear" />
+      <Button layoutX="240.0" layoutY="518.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="36.0" prefWidth="118.0" style="-fx-background-radius: 10; -fx-background-color: #6B8E23;" text="Update">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button layoutX="58.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnDlt" prefHeight="36.0" prefWidth="142.0" style="-fx-background-radius: 10; -fx-background-color: #B22222;" text="Delete">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <Button layoutX="240.0" layoutY="597.0" mnemonicParsing="false" onAction="#btnClr" prefHeight="36.0" prefWidth="118.0" style="-fx-background-radius: 10;" text="Clear">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
       <TableView fx:id="tblCourse" layoutX="458.0" layoutY="28.0" prefHeight="606.0" prefWidth="661.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="140.80001831054688" text="Programe ID" />

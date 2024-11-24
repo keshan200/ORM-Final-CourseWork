@@ -34,21 +34,11 @@ public class RegisterDAOImpl implements RegisterDAO {
     @Override
     public boolean update(Register entity){
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = null;
-        try {
-            transaction = session.beginTransaction();
-            session.update(entity);
-            transaction.commit();
-            return true;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-            return false;
-        } finally {
-            session.close();
-        }
+        Transaction transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override
