@@ -77,14 +77,23 @@ public class DashBoardController {
 
     @FXML
     void btnHome(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view_forms/dashboard_middleAnc.fxml"));
+        Parent load1 = fxmlLoader.load();
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load1);
 
     }
 
 
 
     @FXML
-    void btnLogout(ActionEvent event) {
+    void btnLogout(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view_forms/login_form.fxml"));
+        Parent load1 = fxmlLoader.load();
 
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load1);
     }
 
     @FXML

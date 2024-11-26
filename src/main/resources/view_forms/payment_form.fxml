@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="659.0" prefWidth="1146.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.PaymentController">
+   <children>
+      <TextField layoutX="73.0" layoutY="64.0" prefHeight="34.0" prefWidth="234.0" style="-fx-background-color: white;" />
+      <TextField layoutX="359.0" layoutY="64.0" prefHeight="34.0" prefWidth="244.0" />
+      <TextField layoutX="638.0" layoutY="73.0" prefHeight="34.0" prefWidth="202.0" />
+      <JFXComboBox layoutX="73.0" layoutY="161.0" prefHeight="34.0" prefWidth="254.0" />
+      <TableView layoutX="81.0" layoutY="300.0" prefHeight="314.0" prefWidth="1021.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

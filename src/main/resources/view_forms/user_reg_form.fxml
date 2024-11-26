@@ -3,60 +3,76 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="659.0" prefWidth="1146.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.UserRegController">
+<AnchorPane prefHeight="659.0" prefWidth="1146.0" style="-fx-background-radius: 30; -fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.UserRegController">
    <children>
-      <Pane layoutX="51.0" layoutY="32.0" prefHeight="204.0" prefWidth="344.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;">
-         <children>
-            <TextField fx:id="txtName" layoutX="40.0" layoutY="148.0" prefHeight="36.0" prefWidth="272.0" />
-            <JFXComboBox fx:id="txtRole" layoutX="40.0" layoutY="46.0" prefHeight="36.0" prefWidth="272.0" style="-fx-background-color: white;" />
-            <Label layoutX="40.0" layoutY="14.0" prefHeight="20.0" prefWidth="118.0" text="Account Type :">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="111.0" prefHeight="20.0" prefWidth="118.0" text="User Name :">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="51.0" layoutY="245.0" prefHeight="402.0" prefWidth="344.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30;">
-         <children>
-            <TextField fx:id="txtuID" layoutX="37.0" layoutY="61.0" prefHeight="36.0" prefWidth="272.0" />
-            <Label layoutX="37.0" layoutY="32.0" prefHeight="20.0" prefWidth="118.0" text="User ID :">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtPass" layoutX="37.0" layoutY="157.0" prefHeight="36.0" prefWidth="272.0" />
-            <Label layoutX="37.0" layoutY="127.0" prefHeight="20.0" prefWidth="118.0" text="Password :">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtMail" layoutX="37.0" layoutY="253.0" prefHeight="36.0" prefWidth="272.0" />
-            <Label layoutX="37.0" layoutY="219.0" prefHeight="20.0" prefWidth="118.0" text="Email :">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <JFXButton layoutX="35.0" layoutY="331.0" onAction="#btnSignUp" prefHeight="45.0" prefWidth="103.0" text="Sign up" />
-            <JFXButton layoutX="216.0" layoutY="331.0" onAction="#btnLogin" prefHeight="45.0" prefWidth="103.0" text="log In" />
-         </children>
-      </Pane>
-      <ImageView fitHeight="282.0" fitWidth="509.0" layoutX="446.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9999993c" height="301.0" layoutX="48.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" width="660.0" />
+      <TextField fx:id="txtuID" layoutX="78.0" layoutY="205.0" prefHeight="36.0" prefWidth="272.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtPass" layoutX="421.0" layoutY="205.0" prefHeight="36.0" prefWidth="258.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtMail" layoutX="78.0" layoutY="290.0" prefHeight="36.0" prefWidth="454.0" style="-fx-background-radius: 10;" />
+      <Label layoutX="78.0" layoutY="174.0" prefHeight="20.0" prefWidth="118.0" text="User ID :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="174.0" prefHeight="20.0" prefWidth="118.0" text="Password :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="260.0" prefHeight="20.0" prefWidth="118.0" text="Email :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="797.0" layoutY="311.0" onAction="#btnSignUp" prefHeight="37.0" prefWidth="92.0" style="-fx-background-color: green;" text="Register">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></JFXButton>
+      <JFXComboBox fx:id="txtRole" layoutX="78.0" layoutY="107.0" prefHeight="36.0" prefWidth="272.0" />
+      <TextField fx:id="txtName" layoutX="421.0" layoutY="114.0" prefHeight="36.0" prefWidth="258.0" style="-fx-background-radius: 10;" />
+      <Label layoutX="421.0" layoutY="87.0" prefHeight="20.0" prefWidth="118.0" text="User Name :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="87.0" prefHeight="20.0" prefWidth="118.0" text="Account Type :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblUser" layoutX="46.0" layoutY="370.0" prefHeight="259.0" prefWidth="1080.0">
+        <columns>
+            <TableColumn fx:id="colName" prefWidth="209.60001373291016" text="User Name" />
+          <TableColumn fx:id="colUid" prefWidth="179.99996948242188" text="User ID" />
+          <TableColumn fx:id="colMail" prefWidth="439.9999084472656" text="Email" />
+            <TableColumn fx:id="colAccRole" prefWidth="249.60003662109375" text="Account Type" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="136.0" fitWidth="349.0" layoutX="759.0" layoutY="29.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/img.png" />
+            <Image url="@../images/logo_user.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="772.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="313.0" />
+      <JFXButton layoutX="587.0" layoutY="289.0" onAction="#btnClear" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: orange;" text="clear">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="968.0" layoutY="308.0" onAction="#btnDlt" prefHeight="36.0" prefWidth="92.0" style="-fx-background-color: orange;" text="Delete">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="txtSearch" layoutX="785.0" layoutY="194.0" onAction="#txtSearchOnAction" prefHeight="44.0" prefWidth="286.0" text="Serach User" />
    </children>
 </AnchorPane>

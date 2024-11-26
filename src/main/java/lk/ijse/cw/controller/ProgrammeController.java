@@ -6,12 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.RotateEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.cw.DTO.ProgramDTO;
 import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.bo.BOFactory;
 import lk.ijse.cw.bo.custom.ProgramBO;
 import lk.ijse.cw.bo.custom.StudentBO;
+import lk.ijse.cw.util.Regex;
 import lk.ijse.cw.view.tdm.ProgramTM;
 import lk.ijse.cw.view.tdm.StudentTM;
 
@@ -182,15 +185,14 @@ public class ProgrammeController {
             new Alert(Alert.AlertType.ERROR, "Fee cannot be empty").show();
             return;
         }
-
-        
-        
-        System.out.println("pDTO"+programDTO);
-        if (isSaved) {
-            new Alert(Alert.AlertType.CONFIRMATION,"Course has been registered successfully").show();
-            loadAllProgram();
-            clear();
-        }
+            System.out.println("pDTO" + programDTO);
+        if (isValied()){
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Course has been registered successfully").show();
+                loadAllProgram();
+                clear();
+            }
+            }
 
     }
 
@@ -219,4 +221,31 @@ public class ProgrammeController {
             new Alert(Alert.AlertType.ERROR, "Failed to update the program. Please try again.").show();
         }
     }
+
+
+    @FXML
+    void durationKeyRelaseAction(javafx.scene.input.KeyEvent event) {
+        Regex.setTextColor(lk.ijse.cw.util.TxtField.DURATION, txtDuration);
+    }
+
+
+    @FXML
+    void feeKeyRelaseAction(javafx.scene.input.KeyEvent event) {
+        Regex.setTextColor(lk.ijse.cw.util.TxtField.PRICEDOT, txtFee);
+    }
+
+    @FXML
+    void nameKeyRelaseAction(javafx.scene.input.KeyEvent event) {
+        Regex.setTextColor(lk.ijse.cw.util.TxtField.NAME, txtname);
+    }
+
+
+    public boolean isValied(){
+        boolean nameValid = Regex.setTextColor(lk.ijse.cw.util.TxtField.NAME, txtname);
+        boolean duration = Regex.setTextColor(lk.ijse.cw.util.TxtField.DURATION, txtDuration);
+        boolean fee = Regex.setTextColor(lk.ijse.cw.util.TxtField.PRICEDOT, txtFee);
+
+        return nameValid && duration && fee;
+    }
+
 }

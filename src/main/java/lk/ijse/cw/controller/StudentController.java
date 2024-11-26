@@ -7,12 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.cw.DTO.StudentDTO;
 import lk.ijse.cw.DTO.UserDTO;
 import lk.ijse.cw.bo.BOFactory;
 import lk.ijse.cw.bo.custom.StudentBO;
 import lk.ijse.cw.bo.custom.UserBO;
+import lk.ijse.cw.util.Regex;
+import lk.ijse.cw.util.TxtField;
 import lk.ijse.cw.view.tdm.StudentTM;
 
 import java.time.LocalDate;
@@ -191,11 +194,14 @@ public class StudentController {
         StudentDTO student = new StudentDTO(nic, user, name, email, adr, bday, tel, gender);
 
         boolean isSaved = studentBO.saveStu(student);
+        if (isValid()){
+            new Alert(Alert.AlertType.INFORMATION, "Incorrect.!Check Fields").show();
+        }else {
         if (isSaved) {
             new Alert(Alert.AlertType.CONFIRMATION,"User has been registered successfully").show();
             loadAllStudents();
             ClearFields();
-        }
+        }}
     }
 
     @FXML
@@ -247,5 +253,18 @@ public class StudentController {
     public void setCmbGender(){
         ObservableList<String> list = FXCollections.observableArrayList("Male","Female");
         drpGender.setItems(list);
+    }
+
+
+    @FXML
+    void telOnKeyRelaase(javafx.scene.input.KeyEvent event) {
+        Regex.setTextColor(TxtField.TEL,txtTel);
+    }
+
+
+    public boolean isValid(){
+        boolean telValid =  Regex.setTextColor(TxtField.TEL,txtTel);
+
+        return telValid;
     }
 }

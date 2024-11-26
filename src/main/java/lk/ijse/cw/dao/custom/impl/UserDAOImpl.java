@@ -1,6 +1,7 @@
 package lk.ijse.cw.dao.custom.impl;
 import lk.ijse.cw.config.FactoryConfiguration;
 import lk.ijse.cw.dao.custom.UserDAO;
+import lk.ijse.cw.entity.Program;
 import lk.ijse.cw.entity.Register;
 import lk.ijse.cw.entity.Student;
 import lk.ijse.cw.entity.User;
@@ -39,7 +40,12 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAll() {
-        return List.of();
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        List<User> users = session.createQuery("from User").list();
+        transaction.commit();
+        session.close();
+        return users;
     }
 
     @Override

@@ -32,7 +32,13 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public List<UserDTO> getUsers() {
-        return List.of();
+        ArrayList<UserDTO> user = new ArrayList<>();
+        List<User> users = userDAO.getAll();
+
+        for (User u : users) {
+            user.add(new UserDTO(u.getUID(),u.getName(),u.getEmail(),u.getRole(),u.getPassword()));
+        }
+        return user;
     }
 
     @Override

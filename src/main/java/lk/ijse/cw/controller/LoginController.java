@@ -141,6 +141,7 @@ public class LoginController {
         String password = txtPass.getText();
 
         try {
+
             if (userName.equals(temporaryUserName) && password.equals(temporaryPassword)) {
                 UserSession.getInstance().setUser(123, "admin");
                 navigateToTheDashboard((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
@@ -164,6 +165,7 @@ public class LoginController {
         txtuID.setOnAction(event -> txtPass.requestFocus());
         txtPass.setOnAction(event -> btnLogin(new ActionEvent()));
     }
+
 
     private void navigateToTheDashboard(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view_forms/dahsboard.fxml"));
