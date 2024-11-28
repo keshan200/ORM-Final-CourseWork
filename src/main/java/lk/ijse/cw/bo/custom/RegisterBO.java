@@ -22,4 +22,6 @@ public interface RegisterBO extends SuperBO {
     String generateNewID() throws SQLException, ClassNotFoundException;
 
     List<RegisterDTO> getRegisterationByNIC(String nic) throws SQLException;
+
+    List<RegisterDTO>getPendingPayments() throws SQLException;
 }

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -90,10 +91,15 @@ public class DashBoardController {
     @FXML
     void btnLogout(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view_forms/login_form.fxml"));
-        Parent load1 = fxmlLoader.load();
+        Parent logoutload = fxmlLoader.load();
 
-        ancMain.getChildren().clear();
-        ancMain.getChildren().add(load1);
+        Stage logstage = new Stage();
+        logstage.setScene(new Scene(logoutload));
+        logstage.show();
+
+        Stage window = (Stage)lblName.getScene().getWindow();
+        window.close();
+
     }
 
     @FXML
@@ -137,6 +143,15 @@ public class DashBoardController {
         ancMain.getChildren().add(load);
     }
 
+
+    @FXML
+    void btnPay(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view_forms/payment_form.fxml"));
+        Parent load = fxmlLoader.load();
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
+    }
 
 
 }

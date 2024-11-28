@@ -23,21 +23,17 @@ public class LoginDAOImpl implements LoginDAO {
 
             if(user !=null) {
                 if (BCrypt.checkpw(login.getPassword(), user.getPassword())) {
-
                   session  =  FactoryConfiguration.getInstance().getSession();
                     UserSession.getInstance().setUser(Integer.parseInt(user.getUID()),user.getRole());
                     return true;
-
                 }else {
                     new Alert(Alert.AlertType.ERROR, "Invalid Password").show();
                     return false;
                 }
-
             }else {
                 new Alert(Alert.AlertType.ERROR, "Invalid UserID").show();
                 return false;
             }
-
         }finally {
             session.close();
         }

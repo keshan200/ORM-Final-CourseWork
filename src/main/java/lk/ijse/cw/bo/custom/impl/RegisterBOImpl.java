@@ -48,6 +48,7 @@ public class RegisterBOImpl implements RegisterBO {
 
         List<Register> entityList = registerDAO.getAll();
 
+
         for (Register p : entityList) {
 
             StudentDTO studentDTO = new StudentDTO(
@@ -84,6 +85,29 @@ public class RegisterBOImpl implements RegisterBO {
         ArrayList<RegisterDTO> reg = new ArrayList<>();
 
         List<Register> entityList = registerDAO.getRegisterationByNIC(nic);
+
+        for (Register p : entityList) {
+
+            StudentDTO studentDTO = new StudentDTO(
+                    p.getStudent().getNIC()
+
+            );
+            ProgramDTO programDTO = new ProgramDTO(
+                    p.getProgram().getCId()
+            );
+
+            reg.add(new RegisterDTO(p.getRid(),studentDTO,programDTO,p.getDate(),p.getRegisterFee(),p.getBalance(),p.getPaymentStatus()));
+        }
+
+        return reg;
+    }
+
+    @Override
+    public List<RegisterDTO> getPendingPayments() throws SQLException {
+        ArrayList<RegisterDTO> reg = new ArrayList<>();
+
+        List<Register> entityList = registerDAO.getPending();
+
 
         for (Register p : entityList) {
 

@@ -11,29 +11,34 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="775.0" prefWidth="1345.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.DashBoardController">
    <children>
-      <Pane layoutX="14.0" layoutY="101.0" prefHeight="659.0" prefWidth="158.0" style="-fx-background-radius: 30; -fx-background-color: #DCDCDC;">
+      <Pane layoutX="14.0" layoutY="101.0" prefHeight="659.0" prefWidth="158.0" style="-fx-background-radius: 30; -fx-background-color: #191970;">
          <children>
-            <Button fx:id="btnPro" layoutX="31.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnPrgrm" prefHeight="70.0" prefWidth="108.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 10; -fx-border-color: red;" text="Course">
+            <Button fx:id="btnPro" layoutX="21.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnPrgrm" prefHeight="41.0" prefWidth="116.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700;" text="Course">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="27.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnStu" prefHeight="67.0" prefWidth="108.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 10; -fx-border-color: red;" text="Student">
+            <Button layoutX="21.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnStu" prefHeight="41.0" prefWidth="116.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700;" text="Student">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="23.0" layoutY="270.0" mnemonicParsing="false" onAction="#btnReg" opacity="0.97" prefHeight="60.0" prefWidth="116.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 10; -fx-border-color: red;" text="Register">
+            <Button layoutX="21.0" layoutY="249.0" mnemonicParsing="false" onAction="#btnReg" opacity="0.97" prefHeight="34.0" prefWidth="116.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700;" text="Register">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="31.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="34.0" prefWidth="108.0" style="-fx-background-radius: 10;" text="LogOut" />
-            <Button fx:id="btnUser" layoutX="47.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnSetting" prefHeight="70.0" prefWidth="77.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 10; -fx-border-color: red;" text="User">
+            <Button layoutX="31.0" layoutY="590.0" mnemonicParsing="false" onAction="#btnLogout" prefHeight="34.0" prefWidth="108.0" style="-fx-background-radius: 10; -fx-background-color: #FFD700;" text="LogOut" />
+            <Button fx:id="btnUser" layoutX="21.0" layoutY="461.0" mnemonicParsing="false" onAction="#btnSetting" prefHeight="41.0" prefWidth="116.0" style="-fx-border-radius: 30%; -fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700;" text="User">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button layoutX="33.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnHome" prefHeight="70.0" prefWidth="96.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: red; -fx-background-radius: 10;" text="HOME" wrapText="true">
+            <Button layoutX="21.0" layoutY="107.0" mnemonicParsing="false" onAction="#btnHome" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700; -fx-background-radius: 30; -fx-border-radius: 30;" text="HOME" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="21.0" layoutY="318.0" mnemonicParsing="false" onAction="#btnPay" prefHeight="41.0" prefWidth="116.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 30; -fx-border-color: #FFD700; -fx-border-radius: 30%;" text="Payemets">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

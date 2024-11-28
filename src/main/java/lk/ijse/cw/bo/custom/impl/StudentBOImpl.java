@@ -26,7 +26,7 @@ public class StudentBOImpl implements StudentBO {
     public boolean saveStu(StudentDTO student) {
 
         UserDTO user = student.getUser();
-        User user1 = new User(user.getUID(),user.getPassword(),user.getEmail(),user.getName(),user.getRole(),null);
+        User user1  = new User(user.getUID(),user.getPassword(),user.getEmail(),user.getName(),user.getRole(),null);
 
         return StudetDAO.save(new Student(student.getNIC(),user1,student.getName(),student.getEmail(),student.getAddress(),student.getBday(),student.getTel(),student.getGender(),null));
     }

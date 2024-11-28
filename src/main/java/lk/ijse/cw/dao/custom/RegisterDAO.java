@@ -10,4 +10,7 @@ public interface RegisterDAO extends CrudDAO<Register> {
 
 
     List<Register> getRegisterationByNIC(String nic) throws SQLException;
+
+
+    List<Register> getPending() throws SQLException;
 }

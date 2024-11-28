@@ -196,9 +196,11 @@ public class StudentController {
         boolean isSaved = studentBO.saveStu(student);
         if (isValid()){
             new Alert(Alert.AlertType.INFORMATION, "Incorrect.!Check Fields").show();
+            loadAllStudents();
+            ClearFields();
         }else {
         if (isSaved) {
-            new Alert(Alert.AlertType.CONFIRMATION,"User has been registered successfully").show();
+            new Alert(Alert.AlertType.CONFIRMATION,"Student has been registered successfully").show();
             loadAllStudents();
             ClearFields();
         }}
@@ -264,7 +266,11 @@ public class StudentController {
 
     public boolean isValid(){
         boolean telValid =  Regex.setTextColor(TxtField.TEL,txtTel);
-
         return telValid;
+    }
+
+    @FXML
+    void mailOnRelease(KeyEvent event) {
+     /* Regex.setTextColor(TxtField.EMAIL,txtMail);*/
     }
 }

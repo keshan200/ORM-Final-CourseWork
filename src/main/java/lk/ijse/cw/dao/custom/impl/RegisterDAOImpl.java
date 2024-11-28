@@ -96,4 +96,20 @@ public class RegisterDAOImpl implements RegisterDAO {
         session.close();
         return reg;
     }
+
+    @Override
+    public List<Register> getPending() throws SQLException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Register> pendingReg = session
+                .createQuery("from Register where PaymentStatus = :status", Register.class)
+                .setParameter("status", "Pending")
+                .list();
+
+        transaction.commit();
+        session.close();
+        return pendingReg;
+
+    }
 }

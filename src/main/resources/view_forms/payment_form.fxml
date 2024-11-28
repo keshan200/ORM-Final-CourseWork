@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="659.0" prefWidth="1146.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.PaymentController">
+<AnchorPane prefHeight="659.0" prefWidth="1146.0" style="-fx-background-radius: 30; -fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.cw.controller.PaymentController">
    <children>
-      <TextField layoutX="73.0" layoutY="64.0" prefHeight="34.0" prefWidth="234.0" style="-fx-background-color: white;" />
-      <TextField layoutX="359.0" layoutY="64.0" prefHeight="34.0" prefWidth="244.0" />
-      <TextField layoutX="638.0" layoutY="73.0" prefHeight="34.0" prefWidth="202.0" />
-      <JFXComboBox layoutX="73.0" layoutY="161.0" prefHeight="34.0" prefWidth="254.0" />
-      <TableView layoutX="81.0" layoutY="300.0" prefHeight="314.0" prefWidth="1021.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-        </columns>
+      <TextField fx:id="txtNIC" layoutX="57.0" layoutY="371.0" prefHeight="34.0" prefWidth="211.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+      <Label layoutX="57.0" layoutY="344.0" prefHeight="18.0" prefWidth="190.0" text="Student NIC" />
+      <Button layoutX="296.0" layoutY="373.0" mnemonicParsing="false" onAction="#btNIC" text="Search" />
+      <TableView fx:id="tblPay" layoutX="25.0" layoutY="77.0" prefHeight="214.0" prefWidth="1096.0">
+         <columns>
+            <TableColumn fx:id="colRegID" prefWidth="104.80001068115234" text="Reg ID" />
+            <TableColumn fx:id="colPid" prefWidth="185.60000610351562" text="program ID" />
+            <TableColumn fx:id="colNic" prefWidth="136.80001831054688" text="Stu.NIC" />
+            <TableColumn fx:id="colDate" prefWidth="147.20001220703125" text="Reg_Date" />
+            <TableColumn fx:id="colFee" prefWidth="136.7999267578125" text="Reg_Fee" />
+            <TableColumn fx:id="colStuts" prefWidth="205.60003662109375" text="Status" />
+            <TableColumn fx:id="txtBal" prefWidth="174.39996337890625" text="balance" />
+         </columns>
       </TableView>
+      <Label layoutX="415.0" layoutY="28.0" prefHeight="34.0" prefWidth="221.0" text="Pending Payments">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblPay1" layoutX="25.0" layoutY="444.0" prefHeight="166.0" prefWidth="1096.0">
+         <columns>
+            <TableColumn fx:id="colRegID1" prefWidth="104.80001068115234" text="Reg ID" />
+            <TableColumn fx:id="colPid1" prefWidth="185.60000610351562" text="program ID" />
+            <TableColumn fx:id="colNic1" prefWidth="136.80001831054688" text="Stu.NIC" />
+            <TableColumn fx:id="colDate1" prefWidth="147.20001220703125" text="Reg_Date" />
+            <TableColumn fx:id="colFee1" prefWidth="136.7999267578125" text="Reg_Fee" />
+            <TableColumn fx:id="colStuts1" prefWidth="205.60003662109375" text="Status" />
+            <TableColumn fx:id="txtBal1" prefWidth="174.39996337890625" text="balance" />
+         </columns>
+      </TableView>
+      <TextField fx:id="txtPayrmtn" layoutX="507.0" layoutY="373.0" prefHeight="34.0" prefWidth="211.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+      <Button layoutX="741.0" layoutY="375.0" mnemonicParsing="false" onAction="#btnPay" text="Pay" />
    </children>
 </AnchorPane>

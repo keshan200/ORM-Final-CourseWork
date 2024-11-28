@@ -29,6 +29,9 @@ public class Regex {
             case INTID:
                 field = "^\\d+$";
                 break;
+            case EMAIL:
+                field = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n";
+                break;
         }
 
 
